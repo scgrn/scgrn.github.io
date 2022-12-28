@@ -35,9 +35,13 @@ h1 {
   font-size: 4.0em;
 }
 
-body {
+div {
     opacity: 0;
-    transition: opacity 3s;
+    transition: opacity 1.5s;
+}
+
+.inView {
+    opacity: 1;
 }
 
 a:link, a:visited {
@@ -49,13 +53,6 @@ a:hover, a:active {
   color: var(--main-highlight-color) !important;
   text-shadow: -0.5px 0, 0 0.5px, 0.5px 0, 0 -0.5px;
 }
-
-/*
-DOESN'T WORK!
-.border a:hover {
-  background-color: white;
-}
-*/
 
 a:link svg, a:visited svg {
   color: var(--main-text-color) !important;
@@ -78,13 +75,11 @@ a:hover svg, a:active svg {
   right: 0;
 }
 
-img {
+.image-block img {
   border-radius: 50%;
   width: 75%;
   height: auto;
-}
 
-.image-block img {
   filter: grayscale(100%);
   transition: all .35s;
 }

@@ -4,6 +4,7 @@ import data from './repos.json' assert { type: 'json' };
 
 var canvas;
 var gl;
+var elementsArray;
 
 function addRepos() {
   var container= document.getElementById("repos");
@@ -38,17 +39,32 @@ function addRepos() {
     }
 }
 
+function fadeIn() {
+    for (var i = 0; i < elementsArray.length; i++) {
+        var elem = elementsArray[i]
+        var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
+        if (distInView < 0) {
+            elem.classList.add("inView");
+        } else {
+            elem.classList.remove("inView");
+        }
+    }
+}
+
 function start() {
-  canvas = document.getElementById("canvas");
-  gl = canvas.getContext("webgl2");
-  gl.canvas.width  = window.innerWidth;
-  gl.canvas.height = window.innerHeight;
-  gl.clearColor(0.0 / 255.0, 17.0 / 255.0, 34.0 / 255.0, 1.0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
+    canvas = document.getElementById("canvas");
+    gl = canvas.getContext("webgl2");
+    gl.canvas.width  = window.innerWidth;
+    gl.canvas.height = window.innerHeight;
+    gl.clearColor(0.0 / 255.0, 17.0 / 255.0, 34.0 / 255.0, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
 
-  addRepos();
+    addRepos();
 
-  document.body.style.opacity='1';
+    elementsArray = document.querySelectorAll("div");
+    console.log(elementsArray);
+    window.addEventListener('scroll', fadeIn); 
+    fadeIn();
 }
 
 document.addEventListener("DOMContentLoaded", start);
