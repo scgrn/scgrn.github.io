@@ -37,7 +37,7 @@ h1 {
 
 div {
     opacity: 0;
-    transition: opacity 0.75s;
+    transition: opacity 0.65s;
 }
 
 .inView {
