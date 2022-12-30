@@ -62,8 +62,8 @@ function start() {
     addRepos();
 
     elementsArray = document.querySelectorAll("div");
-    console.log(elementsArray);
     window.addEventListener('scroll', fadeIn); 
+    window.addEventListener('resize', fadeIn); 
     fadeIn();
 }
 
