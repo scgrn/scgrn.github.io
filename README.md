@@ -1,2 +1,2 @@
 # scgrn.github.io
-Portfolio website
+Portfolio website built with Bootstrap and VanillaJS
