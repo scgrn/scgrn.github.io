@@ -5,6 +5,7 @@ import data from './repos.json' assert { type: 'json' };
 var canvas;
 var gl;
 var elementsArray;
+var timeoutID;
 
 function addRepos() {
   var container= document.getElementById("repos");
@@ -51,12 +52,61 @@ function fadeIn() {
     }
 }
 
+export function sendMail() {
+    clearTimeout(timeoutID);
+    
+    var status =  document.getElementById("status");
+    status.innerHTML = "Sending...";
+
+    var form = document.getElementById("contactForm");
+    const formData = new FormData(form);
+    formData.set("recipient", "ajkrause@gmail.com");
+
+    var object = {};
+    formData.forEach((value, key) => {
+        object[key] = value;
+    });
+    var json = JSON.stringify(object);
+
+    fetch('https://alienbug.games/contactForm/contact.php', {
+        method: "POST",
+        // mode: 'no-cors'
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        },
+        body: json
+    }).then(async (response) => {
+        console.log(response);
+        response.clone().json().then((data) => {
+            console.log(data);
+
+            status.innerHTML = data.message;
+            if (data.code == 1) {
+                status.classList.remove("error");
+                form.reset();
+            } else {
+                status.classList.add("error");
+            }
+        }).catch((error) => {
+            console.log(error);
+            status.classList.add("error");
+            status.innerHTML = "Something went wrong!";
+        }).then(function () {
+            timeoutID = setTimeout(() => {
+                status.classList.remove("error");
+                status.innerHTML = "&nbsp;";
+            }, 3500);
+        });
+    });
+}
+
 function start() {
     canvas = document.getElementById("canvas");
     gl = canvas.getContext("webgl2");
     gl.canvas.width  = window.innerWidth;
     gl.canvas.height = window.innerHeight;
-    gl.clearColor(0.0 / 255.0, 17.0 / 255.0, 34.0 / 255.0, 1.0);
+    gl.clearColor(0.025, 0.065, 0.075, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     addRepos();
@@ -65,6 +115,8 @@ function start() {
     window.addEventListener('scroll', fadeIn); 
     window.addEventListener('resize', fadeIn); 
     fadeIn();
+    
+    window.sendMail = sendMail;
 }
 
 document.addEventListener("DOMContentLoaded", start);

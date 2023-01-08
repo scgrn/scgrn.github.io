@@ -1,7 +1,8 @@
 :root {
   --main-bg-color: #112233;
-  --main-text-color: #ccddee;
+  --main-text-color: #c0d0cc; /*#ccddee*/
   --main-highlight-color: #ffb347;
+  --main-error-color: #ff3344;
 }
 
 @include media-breakpoint-up(sm) {
@@ -36,12 +37,12 @@ h1 {
 }
 
 div {
-    opacity: 0;
-    transition: opacity 0.65s;
+  opacity: 0;
+  transition: opacity 0.65s;
 }
 
 .inView {
-    opacity: 1;
+  opacity: 1;
 }
 
 a:link, a:visited {
@@ -92,6 +93,17 @@ a:hover svg, a:active svg {
 
 ul {
   list-style-type: square;
+}
+
+.form-control {
+  border-radius: unset;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.error {
+  font-weight: bold;
+  color: var(--main-error-color);
 }
 
 #canvas {
