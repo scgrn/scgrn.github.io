@@ -14,6 +14,8 @@ inputRepos = json.loads(repoContents)
 
 outputRepos = [];
 
+excludedProjects = (["Mustard-Engine", "dotfiles"])
+
 for i in inputRepos:
     color = "#555555"
     if (i["language"] != None):
@@ -21,15 +23,16 @@ for i in inputRepos:
     else:
         i["language"] = "Unknown"
 
-    outputRepos.append({
-        "name": i["name"],
-        "description": i["description"],
-        "url": i["html_url"],
-        "language": i["language"],
-        "color": color,
-        "forks": i["forks_count"],
-        "stars": i["stargazers_count"]
-    })
+    if not i["name"] in excludedProjects:
+        outputRepos.append({
+            "name": i["name"],
+            "description": i["description"],
+            "url": i["html_url"],
+            "language": i["language"],
+            "color": color,
+            "forks": i["forks_count"],
+            "stars": i["stargazers_count"]
+        })
 
 with open('repos.js', 'w') as jsonFile:
     jsonStr = json.dumps(outputRepos, indent = 2)
