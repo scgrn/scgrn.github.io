@@ -1,117 +1,124 @@
 :root {
-  --main-bg-color: #112233;
-  --main-text-color: #c0d0cc; /*#ccddee*/
-  --main-highlight-color: #ffb347;
-  --main-error-color: #ff3344;
+    --main-bg-color: #112233;
+    --main-text-color: #c0d0cc; /*#ccddee*/
+    --main-highlight-color: #ffb347;
+    --main-error-color: #ff3344;
 }
 
 @include media-breakpoint-up(sm) {
-  html {
-    font-size: 1.2rem;
-  }
+    html {
+        font-size: 1.2rem;
+    }
 }
 
 @include media-breakpoint-up(md) {
-  html {
-    font-size: 1.4rem;
-  }
+    html {
+        font-size: 1.4rem;
+    }
 }
 
 @include media-breakpoint-up(lg) {
-  html {
-    font-size: 1.6rem;
-  }
+    html {
+        font-size: 1.6rem;
+    }
 }
 
 html, body {
-  color: var(--main-text-color);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--main-text-color);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 h1 {
-  font-size: 4.0em;
+    font-size: 4.0em;
 }
 
 div {
-  opacity: 0;
-  transition: opacity 0.65s;
+    opacity: 0;
+    transition: opacity 0.65s;
 }
 
 .inView {
-  opacity: 1;
+    opacity: 1;
 }
 
 a:link, a:visited {
-  text-decoration: none;
-  color: var(--main-highlight-color) !important;
+    text-decoration: none;
+    color: var(--main-highlight-color) !important;
 }
 
 a:hover, a:active {
-  color: var(--main-highlight-color) !important;
-  text-shadow: -0.5px 0, 0 0.5px, 0.5px 0, 0 -0.5px;
+    color: var(--main-highlight-color) !important;
+    text-shadow: -0.5px 0, 0 0.5px, 0.5px 0, 0 -0.5px;
 }
 
 a:link svg, a:visited svg {
-  color: var(--main-text-color) !important;
+    color: var(--main-text-color) !important;
 }
 
 a:hover svg, a:active svg {
-  color: var(--main-text-color) !important;
+    color: var(--main-text-color) !important;
 }
 
 .iconLink {
-  transition: all 0.35s;
+    transition: all 0.35s;
 }
 
 .iconLink:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .navbar {
-  position: absolute;
-  right: 0;
+    position: absolute;
+    right: 0;
 }
 
 .image-block img {
-  border-radius: 50%;
-  width: 75%;
-  height: auto;
+    border-radius: 50%;
+    width: 75%;
+    height: auto;
 
-  filter: grayscale(100%);
-  transition: all .35s;
+    filter: grayscale(100%);
+    transition: all .35s;
 }
 
 .image-block:hover img {
-  filter: grayscale(0);
-  transform: scale(1.15);
-  transition: all .35s;
+    filter: grayscale(0);
+    transform: scale(1.15);
+    transition: all .35s;
 }
 
 ul {
-  list-style-type: square;
+    list-style-type: square;
+}
+
+.repo-card, #hello {
+    background: rgba(6.375, 16.575, 19.125, 0.75);
 }
 
 .form-control {
-  border-radius: unset;
-  margin-top: 15px;
-  margin-bottom: 15px;
+    border-radius: unset;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .error {
-  font-weight: bold;
-  color: var(--main-error-color);
+    font-weight: bold;
+    color: var(--main-error-color);
 }
 
 #canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width:  100%;
-  height: 100%;
-  opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width:    100%;
+    height: 100%;
+    opacity: 1;
+    
+    transform-origin: center;
+    transform: scale(1.0);
 }
