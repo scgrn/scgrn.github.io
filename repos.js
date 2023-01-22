@@ -1,4 +1,4 @@
-[
+export default [
   {
     "name": "ANTIGRAV-BOOTS",
     "description": "Combine *.csv files from your file explorer window",

@@ -1,6 +1,9 @@
 "use strict";
 
-import data from './repos.json' assert { type: 'json' };
+// firefox freaked out when i tried to import json
+// import data from './repos.json' assert { type: 'json' };
+
+import data from './repos.js';
 
 var canvas;
 var gl;

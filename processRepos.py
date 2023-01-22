@@ -27,5 +27,8 @@ for i in inputRepos:
         "stars": i["stargazers_count"]
     })
 
-with open('repos.json', 'w') as json_file:
-    json.dump(outputRepos, json_file, indent = 2)
+with open('repos.js', 'w') as jsonFile:
+    # json.dump(outputRepos, jsonFile, indent = 2)
+    jsonStr = json.dumps(outputRepos, indent = 2)
+    jsonStr = "export default " + jsonStr
+    jsonFile.write(jsonStr)
