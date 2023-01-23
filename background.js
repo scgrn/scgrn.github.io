@@ -8,6 +8,7 @@ var alpha = 0.0;
 var targetAlpha = 0.0;
 
 var doc;
+var requestId;
 
 function render() {
     const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
@@ -42,7 +43,13 @@ function render() {
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
     
-    window.requestAnimationFrame(render);
+    requestId = window.requestAnimationFrame(render, canvas);
+}
+
+function handleContextLost(event) {
+    initGL(doc);
+    event.preventDefault();
+    cancelRequestAnimationFrame(requestId);
 }
 
 export function initGL(document) {
@@ -51,6 +58,7 @@ export function initGL(document) {
     // initialize
     const canvas = document.getElementById('canvas');
     gl = canvas.getContext('webgl2');
+    canvas.addEventListener("webglcontextlost", handleContextLost, false);
     gl.clearColor(0.025, 0.065, 0.075, 1.0);
 
     // compile shaders and link program
