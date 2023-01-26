@@ -103,7 +103,36 @@ export function sendMail() {
     });
 }
 
-function start() {
+function setResumePaperSize() {
+    // https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/territory_information.html
+    let letterCountries = [
+        "BZ",    //  Belize
+        "CA",    //  Canada
+        "CL",    //  Chile
+        "CO",    //  Colombia
+        "CR",    //  Costa Rica
+        "SV",    //  El Salvador
+        "GT",    //  Guatemala
+        "MX",    //  Mexico
+        "NI",    //  Nicaragua
+        "PA",    //  Panama
+        "PH",    //  Philippines
+        "PR",    //  Puerto Rico
+        "US",    //  United States
+        "VE"     //  Venezuela
+    ];
+
+    fetch('https://geolocation-db.com/json/').then(async (response) => {
+        response.clone().json().then((data) => {
+            if (letterCountries.includes(data.country_code)) {
+                var link = document.getElementById("resume");
+                link.setAttribute("href", "./resume/Andrew Krause Resume.US-Letter.pdf");
+            }
+        });
+    });
+}
+
+function init() {
     addRepos();
 
     elementsArray = document.querySelectorAll("div");
@@ -113,7 +142,9 @@ function start() {
     
     window.sendMail = sendMail;
 
+    setResumePaperSize();
+
     initGL(document);
 }
 
-document.addEventListener("DOMContentLoaded", start);
+document.addEventListener("DOMContentLoaded", init);
