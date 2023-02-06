@@ -79,7 +79,7 @@ a:hover svg, a:active svg {
     left: 0;
     width: 100%;
     z-index: 1030;
-    border-bottom: 1px solid;
+    /* border-bottom: 1px solid; */
 }
 
 .scrolled-down {
