@@ -7,13 +7,14 @@ var time = 0;
 
 var doc;
 var requestId;
+var navBarHeight;
 
 function renderEffect(divName, shaderIndex) {
     var container = doc.getElementById(divName);
     var rect = container.getBoundingClientRect();
 
     var targetAlpha = 0.0;
-    if (rect.top <= 0 && rect.bottom >= gl.canvas.clientHeight) {
+    if (rect.top <= (navBarHeight * 2) && rect.bottom >= gl.canvas.clientHeight) {
         targetAlpha = 1.0;
     }
     
@@ -96,6 +97,7 @@ function createShaderProgram(vertexSource, fragmentSource) {
 
 export function initGL(document) {
     doc = document;
+    navBarHeight = document.querySelector('.navbar').offsetHeight;
     
     // initialize
     const canvas = document.getElementById('canvas');
@@ -117,8 +119,6 @@ export function initGL(document) {
     `;
 
     const fragmentSource1 = `#version 300 es
-        // INSIDE DEAD COMPUTER CITY
-        
         precision highp float;
 
         out vec4 color;

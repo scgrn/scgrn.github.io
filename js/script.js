@@ -9,6 +9,8 @@ import { initGL } from './background.js';
 var elementsArray;
 var timeoutID;
 
+var navbarHeight;
+
 function addRepos() {
   var container= document.getElementById("repos");
 
@@ -132,6 +134,29 @@ function setResumePaperSize() {
     });
 }
 
+function initNavBar() {
+    var autohide = document.querySelector('.autohide');
+
+    // add padding-top to bady (if necessary)
+    navbarHeight = document.querySelector('.navbar').offsetHeight;
+    document.body.style.paddingTop = navbarHeight + 'px';
+
+    if (autohide) {
+        var lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.scrollY;
+            if (scrollTop < lastScrollTop) {
+                autohide.classList.remove('scrolled-down');
+                autohide.classList.add('scrolled-up');
+            } else {
+                autohide.classList.remove('scrolled-up');
+                autohide.classList.add('scrolled-down');
+            }
+            lastScrollTop = scrollTop;
+        }); 
+    }
+}
+
 function init() {
     addRepos();
 
@@ -139,6 +164,8 @@ function init() {
     window.addEventListener('scroll', fadeIn); 
     window.addEventListener('resize', fadeIn); 
     fadeIn();
+
+    initNavBar();
     
     window.sendMail = sendMail;
 

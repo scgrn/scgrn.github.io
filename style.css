@@ -1,6 +1,6 @@
 :root {
-    --main-bg-color: #112233;
-    --main-text-color: #c0d0cc; /*#ccddee*/
+    --main-bg-color: #061013;
+    --main-text-color: #c0d0cc;
     --main-highlight-color: #ffb347;
     --main-error-color: #ff3344;
 }
@@ -34,6 +34,7 @@ body {
 
 h1 {
     font-size: 4.0em;
+    background: var(--main-bg-color);
 }
 
 div {
@@ -71,9 +72,31 @@ a:hover svg, a:active svg {
     transform: scale(1.2);
 }
 
-.navbar {
-    position: absolute;
+.autohide {
+    position: fixed;
+    top: 0;
     right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+    border-bottom: 1px solid;
+}
+
+.scrolled-down {
+    transform:translateY(-100%); transition: all 0.3s ease-in-out;
+}
+
+.scrolled-up {
+    transform:translateY(0); transition: all 0.3s ease-in-out;
+}
+
+.navbar-custom {
+    background: var(--main-bg-color);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: var(--main-text-color);
 }
 
 .image-block img {
