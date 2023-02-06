@@ -135,12 +135,10 @@ function setResumePaperSize() {
 }
 
 function initNavBar() {
-    var autohide = document.querySelector('.autohide');
-
-    // add padding-top to bady (if necessary)
     navbarHeight = document.querySelector('.navbar').offsetHeight;
     document.body.style.paddingTop = navbarHeight + 'px';
 
+    var autohide = document.querySelector('.autohide');
     if (autohide) {
         var lastScrollTop = 0;
         window.addEventListener('scroll', function() {
