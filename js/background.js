@@ -196,7 +196,7 @@ export function initGL(document) {
                 posOnRay = camPos + totalDistance * camRay.dir;
             }
 
-            // light position                
+            // light position
             speed = 20.0;
             dist = 150.0;
             vec3 lightPos = vec3(0.0, -cos(fTime / speed) * dist, sin(fTime / speed) * dist);
@@ -206,9 +206,7 @@ export function initGL(document) {
             float diffuse = dot(normal, normalize(lightPos - posOnRay));
             
             float epsilon = 0.0001;
-            if (abs(distanceToScene) < epsilon) {
-                color = vec4(drawColor * diffuse, diffuse);
-            } else {
+            if (abs(distanceToScene) > epsilon) {
                 discard;
             }
             
