@@ -196,6 +196,11 @@ export function initGL(document) {
                 posOnRay = camPos + totalDistance * camRay.dir;
             }
 
+            float epsilon = 0.0001;
+            if (abs(distanceToScene) > epsilon) {
+                discard;
+            }
+
             // light position
             speed = 20.0;
             dist = 150.0;
@@ -204,11 +209,6 @@ export function initGL(document) {
             // phong shading
             vec3 normal = getNormal(posOnRay);
             float diffuse = dot(normal, normalize(lightPos - posOnRay));
-            
-            float epsilon = 0.0001;
-            if (abs(distanceToScene) > epsilon) {
-                discard;
-            }
             
             diffuse *= alpha;
             color = vec4(drawColor * diffuse, diffuse);
