@@ -165,7 +165,7 @@ function initNavBar() {
     })
 
     const logo = document.getElementById('logo');
-    logo.addEventListener('click', () => { bsCollapse.toggle() });
+    logo.addEventListener('click', () => { bsCollapse.hide() });
 }
 
 function init() {
