@@ -155,6 +155,17 @@ function initNavBar() {
             lastScrollTop = scrollTop;
         }); 
     }
+
+    // https://stackoverflow.com/questions/42401606/how-to-hide-collapsible-bootstrap-navbar-on-click
+    const navLinks = document.querySelectorAll('.nav-link');
+    const menuToggle = document.getElementById('main_nav');
+    const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+    navLinks.forEach((l) => {
+        l.addEventListener('click', () => { bsCollapse.toggle() });
+    })
+
+    const logo = document.getElementById('logo');
+    logo.addEventListener('click', () => { bsCollapse.toggle() });
 }
 
 function init() {

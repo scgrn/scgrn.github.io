@@ -99,6 +99,13 @@ a:hover svg, a:active svg {
     color: var(--main-text-color);
 }
 
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .image-block img {
     border-radius: 50%;
     width: 75%;
