@@ -26,7 +26,7 @@ function addRepos() {
           '<div class="col-12 border-bottom">' +
             '<p><em>' + data[i].description + '</em></p>' +
           '</div>' +
-          '<div class="col-3">' +
+          '<div class="col-12">' +
             '<svg width="1em" height="1em"><circle cx="6" cy="8" r="6" stroke="black" stroke-width="0" fill="' + data[i].color + '" /></svg>' +
             '<small>' + data[i].language + '</small>' +
           '</div>' +
