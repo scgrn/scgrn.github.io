@@ -16,10 +16,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
     <link rel="stylesheet" href="style.css">
     <script type="module" src="./js/script.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -269,11 +269,16 @@ Source code is available on <a href="https://github.com/scgrn/Mustard-Engine" ta
                         <div class="form-group">
                             <textarea id="message" class="form-control" name="message" rows="8" placeholder="Message"></textarea>
                         </div>
-                        <div class="g-recaptcha"
-                            data-sitekey="6Le7LzMlAAAAAL2BWdlKZI2-GK075NBvfgsxWfKM"
-                            data-size="normal"
-                            data-callback="recaptchaCallback">
+
+                        <div class="captcha-wrapper justify-content-center text-center">
+                            <div class="g-recaptcha"
+                                data-sitekey="6Le7LzMlAAAAAL2BWdlKZI2-GK075NBvfgsxWfKM"
+                                data-theme="light"
+                                data-size="normal"
+                                data-callback="recaptchaCallback">
+                            </div>
                         </div>
+
                         <br/>
                         <div id="status" class="m-2">&nbsp;</div>
                         <br/>
