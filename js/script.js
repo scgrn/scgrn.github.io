@@ -11,6 +11,12 @@ var timeoutID;
 
 var navbarHeight;
 
+var recaptchaToken = 0;
+
+export function recaptchaCallback(token) {
+    recaptchaToken = token;
+}
+
 function addRepos() {
     var container= document.getElementById("repos");
 
@@ -62,6 +68,8 @@ export function sendMail() {
     formData.forEach((value, key) => {
         object[key] = value;
     });
+    object["recaptchaToken"] = recaptchaToken;
+
     var json = JSON.stringify(object);
 
     fetch('https://alienbug.games/contactForm/contact.php', {
@@ -76,6 +84,7 @@ export function sendMail() {
         console.log(response);
         response.clone().json().then((data) => {
             console.log(data);
+            grecaptcha.reset();
 
             status.innerHTML = data.message;
             if (data.code == 1) {
@@ -85,6 +94,7 @@ export function sendMail() {
                 status.classList.add("error");
             }
         }).catch((error) => {
+            grecaptcha.reset();
             console.log(error);
             status.classList.add("error");
             status.innerHTML = "Something went wrong!";
@@ -169,6 +179,7 @@ function init() {
     initNavBar();
     
     window.sendMail = sendMail;
+    window.recaptchaCallback = recaptchaCallback;
 
     setResumePaperSize();
 
