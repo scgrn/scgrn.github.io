@@ -56,6 +56,11 @@ a:hover, a:active {
     text-shadow: -0.5px 0, 0 0.5px, 0.5px 0, 0 -0.5px;
 }
 
+.no_bold {
+    color: var(--main-text-color) !important;
+    text-shadow: none;
+}
+
 a:link svg, a:visited svg {
     color: var(--main-text-color) !important;
 }
