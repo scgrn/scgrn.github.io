@@ -14,7 +14,7 @@ inputRepos = json.loads(repoContents)
 
 outputRepos = [];
 
-excludedProjects = (["Mustard-Engine", "dotfiles"])
+excludedProjects = (["Mustard-Engine", "dotfiles", "RecordCollection.online"])
 
 for i in inputRepos:
     color = "#555555"
