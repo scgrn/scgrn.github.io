@@ -131,8 +131,10 @@ function setResumePaperSize() {
     fetch('https://geolocation-db.com/json/').then(async (response) => {
         response.clone().json().then((data) => {
             if (letterCountries.includes(data.country_code)) {
-                var link = document.getElementById("resume");
-                link.setAttribute("href", "./resume/Andrew Krause Resume.US-Letter.pdf");
+                var links = document.querySelectorAll(".resume");
+                links.forEach(function(link) {
+                    link.setAttribute("href", "./resume/Andrew Krause Resume.US-Letter.pdf");
+                });
             }
         });
     });
